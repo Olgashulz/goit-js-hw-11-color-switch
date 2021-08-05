@@ -15,18 +15,18 @@ const refs = {
 
 let isActive = false;
 let intervalId = null;
-let color = null;
+let colorId = null;
 
 refs.startBtn.addEventListener('click', chackIntervalState);
 refs.stopBtn.addEventListener('click', stopColor);
 
 
 const randomIntegerFromInterval = (colors) => {    
-    let newColor = Math.floor(Math.random() * (colors.length));
-    if (color === newColor){
+    let newColorId = Math.floor(Math.random() * (colors.length));
+    if (colorId === newColorId){
         return randomIntegerFromInterval(colors);
     }    
-    return color = newColor;
+    return colorId = newColorId;
    };
 
 
