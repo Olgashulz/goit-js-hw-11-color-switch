@@ -1,10 +1,10 @@
 const colors = [
-    '#FFFFFF',
-    '#2196F3',
-    '#4CAF50',
-    '#FF9800',
-    '#009688',
-    '#795548',
+    '#FFFFFF', 
+    '#2196F3', 
+    '#4CAF50', 
+    '#FF9800', 
+    '#009688', 
+    '#795548', 
 ];
 
 const refs = {
@@ -15,13 +15,18 @@ const refs = {
 
 let isActive = false;
 let intervalId = null;
+let color = null;
 
 refs.startBtn.addEventListener('click', chackIntervalState);
 refs.stopBtn.addEventListener('click', stopColor);
 
 
-const randomIntegerFromInterval = (colors) => {
-    return (Math.floor(Math.random() * (colors.length)));  
+const randomIntegerFromInterval = (colors) => {    
+    let newColor = Math.floor(Math.random() * (colors.length));
+    if (color === newColor){
+        return randomIntegerFromInterval(colors);
+    }    
+    return color = newColor;
    };
 
 
@@ -36,13 +41,14 @@ function chackIntervalState () {
 
 function changeColor() {
     isActive = true;
-
+    
     intervalId = setInterval(() =>  { 
     refs.body.style.backgroundColor = colors[randomIntegerFromInterval(colors)] }
-    ,1000)
-
+    , 1000)    
     return intervalId;         
 }
+
+
 
 function stopColor() {
     refs.startBtn.removeAttribute('disabled');
